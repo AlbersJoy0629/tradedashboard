@@ -23,7 +23,7 @@ function Icon({ id, open }) {
   );
 }
 
-const ChangePassword = () => {
+const ChangePassword = ({userInfo}) => {
 
     const [open, setOpen] = React.useState(1);
     const handleOpen = (value) => setOpen(open === value ? 0 : value);
@@ -37,7 +37,7 @@ const ChangePassword = () => {
                     </p>
                 </AccordionHeader>
                 <AccordionBody className="px-1">
-                    <ChangePasswordInput/>
+                    <ChangePasswordInput userInfo={userInfo}/>
                 </AccordionBody>
             </Accordion>
         </>

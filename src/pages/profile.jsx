@@ -5,36 +5,74 @@ import TraderAgreement from "../components/profile/TraderAgreements.jsx";
 import PaymentMethod from "../components/profile/PaymentMethod.jsx";
 import Detail from "../components/profile/Detail.jsx";
 import ChangePassword from "../components/profile/Changepassword.jsx";
+import { useEffect, useState } from "react";
 
-const Profile = ({account, setAccount}) => {
-    return (
+const Profile = ({ account, setAccount }) => {
+	const [userInfo, setUserInfo] = useState({});
+	const token = JSON.parse(localStorage.getItem("userInfo"))?.token;
+	useEffect(() => {
+		const fetchUserInfo = async () => {
+			try {
+				const response = await axios.post(
+					`${config.BackendEndpoint}/getUserInfo`,
+					{ displayName: account?.displayName || "" }, // Use optional chaining and provide a fallback
+					{
+						headers: {
+							Authorization: token || "" // Use fallback for token
+						}
+					}
+				);
+
+				// Check if the account is blocked.
+				if (response.data.message === "Blocked Account") {
+					localStorage.removeItem("userInfo");
+					window.location.reload();
+					return; // Early exit to prevent further processing.
+				}
+
+				setUserInfo(response.data.user);
+			} catch (error) {
+				if (error.response && error.response.status === 401) {
+					localStorage.removeItem("userInfo");
+					window.location.reload();
+				} else {
+					console.error("An unexpected error occurred:", error.message);
+				}
+				// Handle the error according to your application's needs
+			}
+		};
+
+		fetchUserInfo();
+	}, []);
+
+	return (
 		<Layout setAccount={setAccount} account={account}>
-            <div className={'w-full md:px-[30px] md:py-[20px] overflow-hidden'}>
+			<div className={'w-full md:px-[30px] md:py-[20px] overflow-hidden'}>
 
 				<ProfileSettingHeader />
 
 				<div className="w-full border-solid border-2 dark:border-yellow-100 dark:text-white p-4 mt-5 sm:text-[18px] text-[12px] rounded-lg">
-                    26days until next available withdrawal
+					26days until next available withdrawal
 				</div>
 
 				<div className="w-full border-solid flex gap-2 border-2 dark:border-green-200 dark:text-white p-4 mt-5 text-[18px] rounded-lg">
-					<TraderAgreement/>
+					<TraderAgreement />
 				</div>
 
 				<div className={'dashboardCard w-full flex justify-between p-6 mt-5 items-center'}>
-					<PaymentMethod/>
+					<PaymentMethod />
 				</div>
 
 				<div className={'dashboardCard w-full p-6 mt-5'}>
-					<Detail/>
+					<Detail />
 				</div>
 
 				<div className={'dashboardCard w-full p-6 mt-5 items-center'}>
-					<ChangePassword/>
+					<ChangePassword userInfo={userInfo} />
 				</div>
 			</div>
 		</Layout>
-    );
+	);
 };
 
 export default Profile;

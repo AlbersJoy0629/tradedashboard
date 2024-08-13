@@ -104,7 +104,7 @@ const Login = () => {
                         </span>
                     </label>
                     <a
-                        className="text-white hover:text-blue-700 hover:underline hover:underline-offset-4 font-thin"
+                        className="text-white hover:text-purple-200 hover:underline hover:underline-offset-4 font-thin"
                         href="#"
                     >
                         Forgot Password?
@@ -112,7 +112,7 @@ const Login = () => {
                 </div>
                 <div className="text-center md:text-left flex justify-center ">
                     <button
-                        className="mt-4 bg-white hover:bg-blue-700 px-4 py-2 text-black uppercase rounded text-xs tracking-wider font-bold"
+                        className="mt-4 bg-white hover:bg-purple-200 px-4 py-2 text-black uppercase rounded text-xs tracking-wider font-bold"
                         type="submit"
                     >
                         Login

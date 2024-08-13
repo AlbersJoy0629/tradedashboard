@@ -82,29 +82,43 @@ const Login = () => {
                         />
                         <span className="text-white">Remember Me</span>
                     </label> */}
-                    <label className="inline-flex items-center cursor-pointer">
-                        <input type="checkbox" className="hidden peer" />
-                        <span className="flex items-center justify-center w-[14px] h-[14px] border-[1px] border-white bg-transparent rounded-sm peer-checked:bg-white">
-                            <svg
-                                className="w-1 h-1 text-transparent peer-checked:text-white"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M5 13l4 4L19 7"
-                                />
-                            </svg>
-                        </span>
-                        <span className="text-white font-thin ml-2">
+                    <div class="inline-flex items-center">
+                        <label
+                            class="relative flex items-center p-3 rounded-full cursor-pointer"
+                            htmlFor="check"
+                        >
+                            <input
+                                type="checkbox"
+                                class="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-white before:opacity-0 before:transition-opacity checked:border-white checked:bg-transparent checked:before:bg-white hover:before:opacity-10"
+                                id="check"
+                            />
+                            <span class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-3.5 w-3.5"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    stroke="currentColor"
+                                    stroke-width="1"
+                                >
+                                    <path
+                                        fill-rule="evenodd"
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                        clip-rule="evenodd"
+                                    ></path>
+                                </svg>
+                            </span>
+                        </label>
+                        <label
+                            class="mt-px font-light text-white cursor-pointer select-none"
+                            htmlFor="check"
+                        >
                             Remember Me
-                        </span>
-                    </label>
+                        </label>
+                    </div>
+
                     <a
-                        className="text-white hover:text-purple-200 hover:underline hover:underline-offset-4 font-thin"
+                        className="text-white hover:text-purple-200 hover:underline hover:underline-offset-4 font-thin flex items-center"
                         href="#"
                     >
                         Forgot Password?

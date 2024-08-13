@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const Trading = ({ account }) => {
+const Trading = ({ account, initialBalance }) => {
     const [dailyDrawdown, setDailyDrawdown] = useState(0);
     const [totolDrawdown, setTotolDrawdown] = useState(0);
     const [currentDrawdown, setCurrentDrawdown] = useState(0);
@@ -8,9 +8,9 @@ const Trading = ({ account }) => {
 
     useEffect(() => {
         setDailyDrawdown(account.dailyDrawdown || 0);
-        setTotolDrawdown((Number(localStorage.getItem("initialBalance")) - account.totalDrawdown) || 0);
+        setTotolDrawdown((Number(initialBalance) - account.totalDrawdown) || 0);
         setCurrentDrawdown(account.currentDrawdown || 0);
-        setCurrentTotalDrawdown((Number(localStorage.getItem("initialBalance")) - account.balance) ? Number(localStorage.getItem("initialBalance")) - account.balance : 0)
+        setCurrentTotalDrawdown((Number(initialBalance) - account.balance) ? (Number(initialBalance) - account.balance) : 0)
     }, [account])
 
     return (

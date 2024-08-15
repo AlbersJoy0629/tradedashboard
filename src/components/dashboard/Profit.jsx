@@ -9,7 +9,7 @@ const Profit = ({ account, setInitialBalance }) => {
 
   const token = JSON.parse(localStorage.getItem("userInfo"))?.token;
   useEffect(() => {
-    setTotalProfit(account.totalTarget || 1);
+    setTotalProfit(account.totalTarget || 10);
     const getProfit = async () => {
       const response = await axios.post(`${config.BackendEndpoint}/getProfit`, { displayName: account.displayName }, {
         headers: {
@@ -30,7 +30,7 @@ const Profit = ({ account, setInitialBalance }) => {
         return; // Early exit to prevent further processing.
       }
       setInitialBalance(response.data.initialbalance)
-      setProfit(response.data.profit)
+      setProfit((response.data.profit))
       return response.data; // Return the response data if everything is okay.
 
     };
@@ -73,10 +73,10 @@ const Profit = ({ account, setInitialBalance }) => {
         </div>
         <div className="max-w-[200px] min-w-[200px] z-20 dark:hidden">
           <Flat
-            progress={totalProfit ? (profit / totalProfit) * 100 : 0}  // Prevent division by zero
+            progress={(totalProfit ? (profit / totalProfit / account.phaseInitialBalance) * 10000 : 0).toFixed(2)}  // Prevent division by zero
             range={{ from: 0, to: 100 }}
             sign={{ value: '%', position: 'end' }}
-            text={`${profit}$`}  // Ensure the text is a string
+            text={`${profit.toFixed(2)}$`}  // Ensure the text is a string
             showMiniCircle={false}
             showValue={false}
             sx={{

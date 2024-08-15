@@ -8,9 +8,9 @@ const Trading = ({ account, initialBalance }) => {
 
     useEffect(() => {
         setDailyDrawdown(account.dailyDrawdown || 0);
-        setTotolDrawdown((Number(initialBalance) - account.totalDrawdown) || 0);
+        setTotolDrawdown(account.totalDrawdown || 0);
         setCurrentDrawdown(account.currentDrawdown || 0);
-        setCurrentTotalDrawdown((Number(initialBalance) - account.balance) ? (Number(initialBalance) - account.balance) : 0)
+        setCurrentTotalDrawdown((account.phaseInitialBalance - account.balance) ? (account.phaseInitialBalance - account.balance) : 0)
     }, [account])
 
     return (
@@ -30,7 +30,7 @@ const Trading = ({ account, initialBalance }) => {
                             </td>
                             <td className={'tableData w-2/3 dark:text-white'}>
                                 <p className="dark:text-white font-bold text-[13px]">
-                                    ${String(currentDrawdown)} / ${String(dailyDrawdown)}(12 hours, 1 minute before reset)
+                                    ${String(currentDrawdown) * account.phaseInitialBalance / 100} / ${String(dailyDrawdown) * account.phaseInitialBalance / 100}(12 hours, 1 minute before reset)
                                 </p>
                                 {/* <div className="w-full mt-1 bg-gray-200 rounded-full h-2 mb-4 dark:bg-gray-700">
                                 <div className="bg-blue-600 h-2 rounded-full font-bold text-[13px] dark:bg-blue-500 w-1/3" />
@@ -43,7 +43,7 @@ const Trading = ({ account, initialBalance }) => {
                             </td>
                             <td className={'tableData w-2/3 dark:text-white'}>
                                 <p className="dark:text-white font-bold text-[13px]">
-                                    ${String(currentTotalDrawdown)} / ${String(totolDrawdown)}
+                                    ${String(currentTotalDrawdown.toFixed(2))} / ${String(totolDrawdown) * account.phaseInitialBalance / 100}
                                 </p>
                                 {/* <div className="w-full mt-1 bg-gray-200 rounded-full h-2 mb-4 dark:bg-gray-700">
                                 <div className="bg-blue-600 h-2 rounded-full dark:bg-blue-500 w-1/3" />

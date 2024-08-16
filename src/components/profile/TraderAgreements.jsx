@@ -1,6 +1,6 @@
 import { CheckIcon } from '@heroicons/react/24/solid';
 
-const TraderAgreement = () => {
+const TraderAgreement = ({userInfo}) => {
     return (
         <>
             <span className="flex">
@@ -11,7 +11,7 @@ const TraderAgreement = () => {
                     Traders Agreement
                 </p>
                 <p className="sm:text-[16px] text-[12px] mt-1 text-black dark:text-white">
-                    Agreement signed on 26/06/24 07:39 AM and can be viewd here.
+                    Agreement signed on {(String(userInfo.createdAt).slice(0, 10))} and can be viewd here.
                 </p>
             </div>
         </>

@@ -3,7 +3,7 @@ import { ExclamationCircleIcon, LockClosedIcon } from "@heroicons/react/24/solid
 
 import DetailInput from "./DetailInput";
 import AdressInput from "./AdressInput";
-const Detail = () => {
+const Detail = ({userInfo}) => {
     return (
         <>
             <p className="sm:text-[20px] font-bold text-black dark:text-white">
@@ -15,11 +15,11 @@ const Detail = () => {
                     For your security, profile updates can only be made by contacting our support team
                 </p>
             </span>
-            <DetailInput />
+            <DetailInput userInfo={userInfo}/>
             <p className="sm:text-[20px] font-bold text-black dark:text-white mt-5">
                 Adress
             </p>
-            <AdressInput/>
+            <AdressInput userInfo={userInfo}/>
         </>
     );
 };

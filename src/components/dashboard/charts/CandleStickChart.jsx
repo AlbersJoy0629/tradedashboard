@@ -35,7 +35,7 @@ const CandleStickChart = ({account}) => {
                 <h2 className={'cardTitle'}>AccountType: </h2> {accountType}
             </div>
             <div className={'2xl:mb-6 block sm:flex justify-between items-center'}>
-                <h2 className={'cardTitle'}>CurrentDrawdown: </h2> ${currentDrawdown}
+                <h2 className={'cardTitle'}>CurrentDrawdown: </h2> %{currentDrawdown}
             </div>
         </div>
     )

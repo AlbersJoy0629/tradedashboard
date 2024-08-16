@@ -73,10 +73,10 @@ const Profit = ({ account, setInitialBalance }) => {
         </div>
         <div className="max-w-[200px] min-w-[200px] z-20 dark:hidden">
           <Flat
-            progress={(totalProfit ? (profit / totalProfit / account.phaseInitialBalance) * 10000 : 0).toFixed(2)}  // Prevent division by zero
+            progress={(totalProfit && profit < 0 ? (profit / totalProfit / account.phaseInitialBalance) * 10000 : 0).toFixed(2)}  // Prevent division by zero
             range={{ from: 0, to: 100 }}
             sign={{ value: '%', position: 'end' }}
-            text={`${profit.toFixed(2)}$`}  // Ensure the text is a string
+            text={`${- profit.toFixed(2)}$`}  // Ensure the text is a string
             showMiniCircle={false}
             showValue={false}
             sx={{

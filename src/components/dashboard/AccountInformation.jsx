@@ -1,9 +1,16 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AccountInformation = ({ account, initialBalance }) => {
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
     const [platform, setPlatform] = useState("");
+
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate('/profile');
+    };
 
     useEffect(() => {
         setStartDate(account.createdAt || "None");
@@ -16,7 +23,7 @@ const AccountInformation = ({ account, initialBalance }) => {
             <div className={'2xl:mb-6 flex justify-between items-center'}>
                 <p className={'cardTitle md:text-md text-[11px]'}>Account information</p>
             </div>
-            <button className={'w-full md:text-md text-[11px] py-2 mt-2 rounded-xl border-solid border-2 dark:border-white'}>
+            <button className={'w-full md:text-md text-[11px] py-2 mt-2 rounded-xl border-solid border-2 dark:border-white'} onClick={handleClick}>
                 VIEW CREDEMTIALS
             </button>
             <div className={'h-full overflow-y-auto mt-1'}>
@@ -27,23 +34,23 @@ const AccountInformation = ({ account, initialBalance }) => {
                                 Start date
                             </td>
                             <td className={'tableData w-1/2 text-white font-semibold'}>
-                                {startDate}
+                                {(String(userInfo.createdAt).slice(0, 10))}
                             </td>
                         </tr>
-                        <tr className={'tableRow'}>
+                        {/* <tr className={'tableRow'}>
                             <td className={'tableData w-1/2 text-white font-semibold'}>
                                 End date
                             </td>
                             <td className={'tableData w-1/2 text-white font-semibold'}>
                                 {endDate}
                             </td>
-                        </tr>
+                        </tr> */}
                         <tr className={'tableRow'}>
                             <td className={'tableData w-1/2 text-white font-semibold'}>
                                 Initial Balance
                             </td>
                             <td className={'tableData w-1/2 text-white font-semibold'}>
-                                ${initialBalance}
+                                ${account.phaseInitialBalance}
                             </td>
                         </tr>
                         <tr className={'tableRow'}>

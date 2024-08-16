@@ -51,12 +51,8 @@ const Profile = ({ account, setAccount }) => {
 
 				<ProfileSettingHeader />
 
-				<div className="w-full border-solid border-2 dark:border-yellow-100 dark:text-white p-4 mt-5 sm:text-[18px] text-[12px] rounded-lg">
-					26days until next available withdrawal
-				</div>
-
 				<div className="w-full border-solid flex gap-2 border-2 dark:border-green-200 dark:text-white p-4 mt-5 text-[18px] rounded-lg">
-					<TraderAgreement />
+					<TraderAgreement userInfo={userInfo}/>
 				</div>
 
 				<div className={'dashboardCard w-full flex justify-between p-6 mt-5 items-center'}>
@@ -64,7 +60,7 @@ const Profile = ({ account, setAccount }) => {
 				</div>
 
 				<div className={'dashboardCard w-full p-6 mt-5'}>
-					<Detail />
+					<Detail userInfo={userInfo}/>
 				</div>
 
 				<div className={'dashboardCard w-full p-6 mt-5 items-center'}>

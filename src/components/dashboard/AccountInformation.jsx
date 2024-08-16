@@ -34,7 +34,7 @@ const AccountInformation = ({ account, initialBalance }) => {
                                 Start date
                             </td>
                             <td className={'tableData w-1/2 text-white font-semibold'}>
-                                {(String(userInfo.createdAt).slice(0, 10))}
+                                {(String(account.createdAt).slice(0, 10))}
                             </td>
                         </tr>
                         {/* <tr className={'tableRow'}>

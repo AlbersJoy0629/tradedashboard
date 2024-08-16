@@ -42,7 +42,7 @@ const Profit = ({ account, setInitialBalance }) => {
     <>
       <div className={"sm:mb-[18px] flex sm:mx-6 justify-between items-center gap-x-3"}>
         <span className={"cardTitle"}>Profit</span>
-        <span className={"cardTitle"}>{String(profit)}$</span>
+        <span className={"cardTitle"}>{String(-profit.toFixed(2))}$</span>
       </div>
       <div className={"flex sm:flex-col py-5 flex-row sm:items-center justify-center"}>
         <div className="max-w-[200px] min-w-[200px] z-20 hidden dark:block">

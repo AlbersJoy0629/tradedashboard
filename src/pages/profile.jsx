@@ -6,6 +6,8 @@ import PaymentMethod from "../components/profile/PaymentMethod.jsx";
 import Detail from "../components/profile/Detail.jsx";
 import ChangePassword from "../components/profile/Changepassword.jsx";
 import { useEffect, useState } from "react";
+import axios from "axios";
+import config from "../config/main.js";
 
 const Profile = ({ account, setAccount }) => {
 	const [userInfo, setUserInfo] = useState({});

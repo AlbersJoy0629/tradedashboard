@@ -82,20 +82,20 @@ const Login = () => {
                         />
                         <span className="text-white">Remember Me</span>
                     </label> */}
-                    <div class="inline-flex items-center">
+                    <div className="inline-flex items-center">
                         <label
-                            class="relative flex items-center p-3 rounded-full cursor-pointer"
+                            className="relative flex items-center p-3 rounded-full cursor-pointer"
                             htmlFor="check"
                         >
                             <input
                                 type="checkbox"
-                                class="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-white before:opacity-0 before:transition-opacity checked:border-white checked:bg-transparent checked:before:bg-white hover:before:opacity-10"
+                                className="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-white before:opacity-0 before:transition-opacity checked:border-white checked:bg-transparent checked:before:bg-white hover:before:opacity-10"
                                 id="check"
                             />
-                            <span class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                            <span className="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
-                                    class="h-3.5 w-3.5"
+                                    className="h-3.5 w-3.5"
                                     viewBox="0 0 20 20"
                                     fill="currentColor"
                                     stroke="currentColor"
@@ -110,7 +110,7 @@ const Login = () => {
                             </span>
                         </label>
                         <label
-                            class="mt-px font-light text-white cursor-pointer select-none"
+                            className="mt-px font-light text-white cursor-pointer select-none"
                             htmlFor="check"
                         >
                             Remember Me

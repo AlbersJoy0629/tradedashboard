@@ -42,7 +42,7 @@ const Profit = ({ account, setInitialBalance }) => {
     <>
       <div className={"sm:mb-[18px] flex sm:mx-6 justify-between items-center gap-x-3"}>
         <span className={"cardTitle"}>Profit</span>
-        <span className={"cardTitle"}>{String(-profit.toFixed(2))}$</span>
+        <span className={"cardTitle"}>{`$${String(-profit.toFixed(2))}`}</span>
       </div>
       <div className={"flex sm:flex-col py-5 flex-row sm:items-center justify-center"}>
         <div className="max-w-[200px] min-w-[200px] z-20 hidden dark:block">
@@ -76,7 +76,7 @@ const Profit = ({ account, setInitialBalance }) => {
             progress={(totalProfit && profit < 0 ? ( - profit / totalProfit / account.phaseInitialBalance) * 10000 : 0).toFixed(2)}  // Prevent division by zero
             range={{ from: 0, to: 100 }}
             sign={{ value: '%', position: 'end' }}
-            text={`${-profit.toFixed(2)}$`}  // Ensure the text is a string
+            text={`$${-profit.toFixed(2)}`}  // Ensure the text is a string
             showMiniCircle={false}
             showValue={false}
             sx={{

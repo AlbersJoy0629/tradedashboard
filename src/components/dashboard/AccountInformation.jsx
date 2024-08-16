@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 const AccountInformation = ({ account, initialBalance }) => {
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
     const [platform, setPlatform] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
 
     const navigate = useNavigate();
 
@@ -16,7 +19,11 @@ const AccountInformation = ({ account, initialBalance }) => {
         setStartDate(account.createdAt || "None");
         setEndDate(account.updatedAt || "None");
         setPlatform(account.tradeSystem || "None");
-    }, [account])
+    }, [account]);
+
+    const handleTogglePassword = () => {
+        setShowPassword(prev => !prev);
+    };
 
     return (
         <div>
@@ -24,7 +31,7 @@ const AccountInformation = ({ account, initialBalance }) => {
                 <p className={'cardTitle md:text-md text-[11px]'}>Account information</p>
             </div>
             <button className={'w-full md:text-md text-[11px] py-2 mt-2 rounded-xl border-solid border-2 dark:border-white'} onClick={handleClick}>
-                VIEW CREDEMTIALS
+                VIEW CREDENTIALS
             </button>
             <div className={'h-full overflow-y-auto mt-1'}>
                 <table className={'w-full table-auto'}>
@@ -37,14 +44,28 @@ const AccountInformation = ({ account, initialBalance }) => {
                                 {(String(account.createdAt).slice(0, 10))}
                             </td>
                         </tr>
-                        {/* <tr className={'tableRow'}>
+                        <tr className={'tableRow'}>
                             <td className={'tableData w-1/2 text-white font-semibold'}>
-                                End date
+                                UserName 
                             </td>
                             <td className={'tableData w-1/2 text-white font-semibold'}>
-                                {endDate}
+                                {account.accountUser}
                             </td>
-                        </tr> */}
+                        </tr>
+                        <tr className={'tableRow'}>
+                            <td className={'tableData w-1/2 text-white font-semibold'}>
+                                Password 
+                            </td>
+                            <td className={'tableData w-1/2 text-white font-semibold'}>
+                                <span className="flex gap-1 items-center">
+                                    {account.accountPassword ? 
+                                    (showPassword ? account.accountPassword : '••••••••••••'): ""}
+                                    <button onClick={handleTogglePassword} className="ml-2 text-white" hidden={!account.accountPassword}>
+                                        <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+                                    </button>
+                                </span>
+                            </td>
+                        </tr>
                         <tr className={'tableRow'}>
                             <td className={'tableData w-1/2 text-white font-semibold'}>
                                 Initial Balance
